@@ -1,12 +1,11 @@
 package sistemaxadrez;
 
-import tabuleiro.Posicao;
+import tabuleiro.Tabuleiro;
 
 public class SistemaXadrez {
 
     public static void main(String[] args) {
-        Posicao p1 = new Posicao(3, 5);
-        System.out.print(p1);
+        Tabuleiro t1 = new Tabuleiro(8, 8);
     }
     
 }
