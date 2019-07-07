@@ -4,6 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/vnog/Documents/NetBeansProjects/SistemaXadrez/src/sistemaxadrez/SistemaXadrez.java</file>
+            <file>file:/C:/Users/vnog/Documents/NetBeansProjects/SistemaXadrez/src/tabuleiro/Peca.java</file>
+            <file>file:/C:/Users/vnog/Documents/NetBeansProjects/SistemaXadrez/src/xadrez/PecaXadrez.java</file>
+            <file>file:/C:/Users/vnog/Documents/NetBeansProjects/SistemaXadrez/src/tabuleiro/Tabuleiro.java</file>
+            <file>file:/C:/Users/vnog/Documents/NetBeansProjects/SistemaXadrez/src/xadrez/PartidaXadrez.java</file>
+            <file>file:/C:/Users/vnog/Documents/NetBeansProjects/SistemaXadrez/src/sistemaxadrez/UI.java</file>
+            <file>file:/C:/Users/vnog/Documents/NetBeansProjects/SistemaXadrez/src/tabuleiro/Posicao.java</file>
+            <file>file:/C:/Users/vnog/Documents/NetBeansProjects/SistemaXadrez/src/xadrez/Color.java</file>
         </group>
     </open-files>
 </project-private>
