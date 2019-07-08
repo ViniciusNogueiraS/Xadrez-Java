@@ -4,15 +4,15 @@ import tabuleiro.Peca;
 import tabuleiro.Tabuleiro;
 
 public class PecaXadrez extends Peca{
-    private Color color;
+    private Cor cor;
 
-    public PecaXadrez(Color color, Tabuleiro tabuleiro) {
+    public PecaXadrez(Cor cor, Tabuleiro tabuleiro) {
         super(tabuleiro);
-        this.color = color;
+        this.cor = cor;
     }
 
-    public Color getColor() {
-        return color;
+    public Cor getColor() {
+        return cor;
     }    
     
 }
