@@ -1,9 +1,23 @@
 package sistemaxadrez;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
 import xadrez.Cor;
 import xadrez.PecaXadrez;
+import xadrez.PosicaoXadrez;
 
 public class UI {
+    
+    public static PosicaoXadrez lerPosicaoXadrez(Scanner sc){
+        try{
+            String s = sc.nextLine();
+            char coluna = s.charAt(0);
+            int linha = Integer.parseInt(s.substring(1));
+            return new PosicaoXadrez(coluna, linha);   
+        }catch(RuntimeException e){
+            throw new InputMismatchException("Erro ao ler posição de xadrez!");
+        }
+    }
     
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
@@ -46,4 +60,6 @@ public class UI {
         }
         System.out.print(ANSI_GREEN_BACKGROUND + " ");
     }
+    
+    
 }
