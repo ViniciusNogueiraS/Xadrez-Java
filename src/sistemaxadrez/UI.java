@@ -38,6 +38,12 @@ public class UI {
     public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
     
+    public static void limpaTela(){
+        for (int i = 0; i < 40; ++i){
+            System.out.println();
+        }  
+    }
+    
     public static void printTabuleiro(PecaXadrez[][] pecas){
         for(int i = 0; i < pecas.length; i++){
             System.out.print(ANSI_GREEN_BACKGROUND+(8-i)+" ");
