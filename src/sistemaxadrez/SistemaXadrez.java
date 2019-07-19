@@ -16,6 +16,8 @@ public class SistemaXadrez {
         while(true){
             try{
                 UI.limpaTela();
+                System.out.println("P = Peão, T = Torre, C = Cavalo, B = Bispo, R = Rei, D = Dama");
+                System.out.println();
                 UI.printTabuleiro(partida1.getPecas());   
                 System.out.println();
                 System.out.print("Origem: ");

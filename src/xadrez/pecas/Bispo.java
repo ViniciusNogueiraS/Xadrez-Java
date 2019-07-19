@@ -5,15 +5,14 @@ import tabuleiro.Tabuleiro;
 import xadrez.Cor;
 import xadrez.PecaXadrez;
 
-public class Torre extends PecaXadrez{
-
-    public Torre(Tabuleiro tabuleiro, Cor cor) {
+public class Bispo extends PecaXadrez{
+    public Bispo(Tabuleiro tabuleiro, Cor cor) {
         super(cor, tabuleiro);
     }
-    
+
     @Override
     public String toString() {
-        return "T";
+        return "B";
     }
 
     @Override
@@ -22,40 +21,44 @@ public class Torre extends PecaXadrez{
         
         Posicao p = new Posicao(0,0);
         
-        //ACIMA DA PEÇA
-        p.setValores(posicao.getLinha() - 1, posicao.getColuna());
+        //DIAGONAL CIMA-ESQUERDA DA PEÇA
+        p.setValores(posicao.getLinha() - 1, posicao.getColuna() - 1);
         while(getTabuleiro().ExistePosicao(p) && !getTabuleiro().ExistePeca(p)){
             mat[p.getLinha()][p.getColuna()] = true;
             p.setLinha(p.getLinha() - 1);
-        }
-        if(getTabuleiro().ExistePosicao(p) && existePecaInimiga(p)){
-            mat[p.getLinha()][p.getColuna()] = true;
-        }
-        
-        //Á ESQUERDA DA PEÇA
-        p.setValores(posicao.getLinha(), posicao.getColuna() - 1);
-        while(getTabuleiro().ExistePosicao(p) && !getTabuleiro().ExistePeca(p)){
-            mat[p.getLinha()][p.getColuna()] = true;
             p.setColuna(p.getColuna() - 1);
         }
         if(getTabuleiro().ExistePosicao(p) && existePecaInimiga(p)){
             mat[p.getLinha()][p.getColuna()] = true;
         }
         
-        //ABAIXO DA PEÇA
-        p.setValores(posicao.getLinha() + 1, posicao.getColuna());
+        //DIAGONAL BAIXO-ESQUERDA DA PEÇA
+        p.setValores(posicao.getLinha() + 1, posicao.getColuna() - 1);
         while(getTabuleiro().ExistePosicao(p) && !getTabuleiro().ExistePeca(p)){
             mat[p.getLinha()][p.getColuna()] = true;
             p.setLinha(p.getLinha() + 1);
+            p.setColuna(p.getColuna() - 1);
         }
         if(getTabuleiro().ExistePosicao(p) && existePecaInimiga(p)){
             mat[p.getLinha()][p.getColuna()] = true;
         }
         
-        //Á DIREITA DA PEÇA
-        p.setValores(posicao.getLinha(), posicao.getColuna() + 1);
+        //DIAGONAL BAIXO-DIREITA DA PEÇA
+        p.setValores(posicao.getLinha() + 1, posicao.getColuna() + 1);
         while(getTabuleiro().ExistePosicao(p) && !getTabuleiro().ExistePeca(p)){
             mat[p.getLinha()][p.getColuna()] = true;
+            p.setLinha(p.getLinha() + 1);
+            p.setColuna(p.getColuna() + 1);
+        }
+        if(getTabuleiro().ExistePosicao(p) && existePecaInimiga(p)){
+            mat[p.getLinha()][p.getColuna()] = true;
+        }
+        
+        //DIAGONAL CIMA-DIREITA DA PEÇA
+        p.setValores(posicao.getLinha() - 1, posicao.getColuna() + 1);
+        while(getTabuleiro().ExistePosicao(p) && !getTabuleiro().ExistePeca(p)){
+            mat[p.getLinha()][p.getColuna()] = true;
+            p.setLinha(p.getLinha() - 1);
             p.setColuna(p.getColuna() + 1);
         }
         if(getTabuleiro().ExistePosicao(p) && existePecaInimiga(p)){

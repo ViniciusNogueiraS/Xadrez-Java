@@ -12,7 +12,7 @@ public abstract class PecaXadrez extends Peca{
         this.cor = cor;
     }
 
-    public Cor getColor() {
+    public Cor getCor() {
         return cor;
     }   
     

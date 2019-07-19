@@ -5,15 +5,14 @@ import tabuleiro.Tabuleiro;
 import xadrez.Cor;
 import xadrez.PecaXadrez;
 
-public class Rei extends PecaXadrez{
-
-    public Rei(Tabuleiro tabuleiro, Cor cor) {
+public class Cavalo extends PecaXadrez{
+    public Cavalo(Tabuleiro tabuleiro, Cor cor) {
         super(cor, tabuleiro);
     }
-
+    
     @Override
     public String toString() {
-        return "R";
+        return "C";
     }
 
     @Override
@@ -22,8 +21,8 @@ public class Rei extends PecaXadrez{
         
         Posicao p = new Posicao(0,0);
         
-        //ACIMA DA PEÇA
-        p.setValores(posicao.getLinha() - 1, posicao.getColuna());
+        //2 ACIMA E 1 Á ESQUERDA
+        p.setValores(posicao.getLinha() - 2, posicao.getColuna() - 1);
         if(getTabuleiro().ExistePosicao(p) && !getTabuleiro().ExistePeca(p)){
             mat[p.getLinha()][p.getColuna()] = true;
         }
@@ -31,8 +30,8 @@ public class Rei extends PecaXadrez{
             mat[p.getLinha()][p.getColuna()] = true;
         }
         
-        //DIAGONAL CIMA-ESQUERDA DA PEÇA
-        p.setValores(posicao.getLinha() - 1, posicao.getColuna() - 1);
+        //2 ACIMA E 1 Á DIREITA
+        p.setValores(posicao.getLinha() - 2, posicao.getColuna() + 1);
         if(getTabuleiro().ExistePosicao(p) && !getTabuleiro().ExistePeca(p)){
             mat[p.getLinha()][p.getColuna()] = true;
         }
@@ -40,8 +39,8 @@ public class Rei extends PecaXadrez{
             mat[p.getLinha()][p.getColuna()] = true;
         }
         
-        //Á ESQUERDA DA PEÇA
-        p.setValores(posicao.getLinha(), posicao.getColuna() - 1);
+        //1 ACIMA E 2 Á ESQUERDA
+        p.setValores(posicao.getLinha() - 1, posicao.getColuna() - 2);
         if(getTabuleiro().ExistePosicao(p) && !getTabuleiro().ExistePeca(p)){
             mat[p.getLinha()][p.getColuna()] = true;
         }
@@ -49,8 +48,8 @@ public class Rei extends PecaXadrez{
             mat[p.getLinha()][p.getColuna()] = true;
         }
         
-        //DIAGONAL BAIXO-ESQUERDA DA PEÇA
-        p.setValores(posicao.getLinha() + 1, posicao.getColuna() - 1);
+        //1 ACIMA E 2 Á DIREITA
+        p.setValores(posicao.getLinha() - 1, posicao.getColuna() + 2);
         if(getTabuleiro().ExistePosicao(p) && !getTabuleiro().ExistePeca(p)){
             mat[p.getLinha()][p.getColuna()] = true;
         }
@@ -58,8 +57,8 @@ public class Rei extends PecaXadrez{
             mat[p.getLinha()][p.getColuna()] = true;
         }
         
-        //ABAIXO DA PEÇA
-        p.setValores(posicao.getLinha() + 1, posicao.getColuna());
+        //2 ABAIXO E 1 Á ESQUERDA
+        p.setValores(posicao.getLinha() + 2, posicao.getColuna() - 1);
         if(getTabuleiro().ExistePosicao(p) && !getTabuleiro().ExistePeca(p)){
             mat[p.getLinha()][p.getColuna()] = true;
         }
@@ -67,8 +66,8 @@ public class Rei extends PecaXadrez{
             mat[p.getLinha()][p.getColuna()] = true;
         }
         
-        //DIAGONAL BAIXO-DIREITA DA PEÇA
-        p.setValores(posicao.getLinha() + 1, posicao.getColuna() + 1);
+        //2 ABAIXO E 1 Á DIREITA
+        p.setValores(posicao.getLinha() + 2, posicao.getColuna() + 1);
         if(getTabuleiro().ExistePosicao(p) && !getTabuleiro().ExistePeca(p)){
             mat[p.getLinha()][p.getColuna()] = true;
         }
@@ -76,8 +75,8 @@ public class Rei extends PecaXadrez{
             mat[p.getLinha()][p.getColuna()] = true;
         }
         
-        //Á DIREITA DA PEÇA
-        p.setValores(posicao.getLinha(), posicao.getColuna() + 1);
+        //1 ABAIXO E 2 Á ESQUERDA
+        p.setValores(posicao.getLinha() + 1, posicao.getColuna() - 2);
         if(getTabuleiro().ExistePosicao(p) && !getTabuleiro().ExistePeca(p)){
             mat[p.getLinha()][p.getColuna()] = true;
         }
@@ -85,8 +84,8 @@ public class Rei extends PecaXadrez{
             mat[p.getLinha()][p.getColuna()] = true;
         }
         
-        //DIAGONAL CIMA-DIREITA DA PEÇA
-        p.setValores(posicao.getLinha() - 1, posicao.getColuna() + 1);
+        //1 ABAIXO E 2 Á DIREITA
+        p.setValores(posicao.getLinha() + 1, posicao.getColuna() + 2);
         if(getTabuleiro().ExistePosicao(p) && !getTabuleiro().ExistePeca(p)){
             mat[p.getLinha()][p.getColuna()] = true;
         }

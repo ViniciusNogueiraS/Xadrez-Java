@@ -41,24 +41,28 @@ public class UI {
     public static void limpaTela(){
         for (int i = 0; i < 40; ++i){
             System.out.println();
-        }  
+        }
     }
     
     public static void printTabuleiro(PecaXadrez[][] pecas){
+        System.out.println(ANSI_WHITE_BACKGROUND+"  a b c d e f g h  ");
         for(int i = 0; i < pecas.length; i++){
-            System.out.print(ANSI_GREEN_BACKGROUND+(8-i)+" ");
+            System.out.print(ANSI_WHITE_BACKGROUND+(8-i)+ANSI_GREEN_BACKGROUND+" ");
             for(int j = 0; j < pecas.length; j++){
-                printPeca(pecas[i][j]);
+                    printPeca(pecas[i][j]);
             }
+            System.out.print(ANSI_WHITE_BACKGROUND+(8-i));
             System.out.println();
         }
-        System.out.println("  a b c d e f g h ");
+        System.out.println(ANSI_WHITE_BACKGROUND+"  a b c d e f g h  ");
     }
+    
     private static void printPeca(PecaXadrez peca) {
+        System.out.print(ANSI_GREEN_BACKGROUND);
 	if (peca == null) {
             System.out.print("-");	        
         }else{
-            if (peca.getColor() == Cor.BRANCA){
+            if (peca.getCor() == Cor.BRANCA){
                 System.out.print(ANSI_WHITE + "\033[1m" + peca + "\033[0m" + ANSI_RESET);
             }else{
                 System.out.print(peca);
