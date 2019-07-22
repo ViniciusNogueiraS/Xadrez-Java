@@ -3,6 +3,7 @@ package sistemaxadrez;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import xadrez.Cor;
+import xadrez.PartidaXadrez;
 import xadrez.PecaXadrez;
 import xadrez.PosicaoXadrez;
 
@@ -49,7 +50,7 @@ public class UI {
         for(int i = 0; i < pecas.length; i++){
             System.out.print(ANSI_WHITE_BACKGROUND+(8-i)+ANSI_GREEN_BACKGROUND+" ");
             for(int j = 0; j < pecas.length; j++){
-                    printPeca(pecas[i][j]);
+                    printPeca(pecas[i][j], false);
             }
             System.out.print(ANSI_WHITE_BACKGROUND+(8-i));
             System.out.println();
@@ -57,15 +58,31 @@ public class UI {
         System.out.println(ANSI_WHITE_BACKGROUND+"  a b c d e f g h  ");
     }
     
-    private static void printPeca(PecaXadrez peca) {
+    public static void printTabuleiro(PecaXadrez[][] pecas, boolean[][] movimentosPossiveis){
+        System.out.println(ANSI_WHITE_BACKGROUND+"  a b c d e f g h  ");
+        for(int i = 0; i < pecas.length; i++){
+            System.out.print(ANSI_WHITE_BACKGROUND+(8-i)+ANSI_GREEN_BACKGROUND+" ");
+            for(int j = 0; j < pecas.length; j++){
+                printPeca(pecas[i][j], movimentosPossiveis[i][j]);
+            }
+            System.out.print(ANSI_WHITE_BACKGROUND+(8-i));
+            System.out.println();
+        }
+        System.out.println(ANSI_WHITE_BACKGROUND+"  a b c d e f g h  ");
+    }
+    
+    private static void printPeca(PecaXadrez peca, boolean mp){
+        if(mp){
+            System.out.print(ANSI_RED);
+        }
         System.out.print(ANSI_GREEN_BACKGROUND);
 	if (peca == null) {
-            System.out.print("-");	        
+            System.out.print("-" + ANSI_RESET);
         }else{
             if (peca.getCor() == Cor.BRANCA){
                 System.out.print(ANSI_WHITE + "\033[1m" + peca + "\033[0m" + ANSI_RESET);
             }else{
-                System.out.print(peca);
+                System.out.print(peca + ANSI_RESET);
             }
         }
         System.out.print(ANSI_GREEN_BACKGROUND + " ");

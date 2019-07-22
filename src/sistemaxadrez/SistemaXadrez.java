@@ -11,8 +11,8 @@ public class SistemaXadrez {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        
         PartidaXadrez partida1 = new PartidaXadrez();
+        
         while(true){
             try{
                 UI.limpaTela();
@@ -22,6 +22,11 @@ public class SistemaXadrez {
                 System.out.println();
                 System.out.print("Origem: ");
                 PosicaoXadrez origem = UI.lerPosicaoXadrez(sc);
+                
+                boolean[][] movimentosPossiveis = partida1.movimentosPossiveis(origem);
+                UI.limpaTela();
+                UI.printTabuleiro(partida1.getPecas(), movimentosPossiveis);
+                
                 System.out.println();
                 System.out.print("Destino: ");
                 PosicaoXadrez destino = UI.lerPosicaoXadrez(sc);
