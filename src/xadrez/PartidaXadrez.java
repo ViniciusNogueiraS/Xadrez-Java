@@ -1,5 +1,7 @@
 package xadrez;
 
+import java.util.ArrayList;
+import java.util.List;
 import tabuleiro.Peca;
 import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
@@ -12,10 +14,25 @@ import xadrez.pecas.Torre;
 
 public class PartidaXadrez {
     private Tabuleiro tabuleiro;
+    private int turno;
+    private Cor jogadorAtual;
+    
+    private List<Peca> pecasNoTabuleiro = new ArrayList<>();
+    private List<Peca> pecasCapturadas = new ArrayList<>();
 
     public PartidaXadrez() {
         tabuleiro = new Tabuleiro(8, 8);
+        turno = 1;
+        jogadorAtual = Cor.BRANCA;
         iniciarPartida();
+    }
+    
+    public int getTurno(){
+        return turno;
+    }
+    
+    public Cor getJogadorAtual(){
+        return jogadorAtual;
     }
     
     public PecaXadrez[][] getPecas(){
@@ -40,6 +57,7 @@ public class PartidaXadrez {
         validaPosicaoOrigem(origem);
         validaPosicaoDestino(origem, destino);
         Peca pecaCapturada = fazerMovimento(origem, destino);
+        proximoTurno();
         return (PecaXadrez)pecaCapturada;
     }
     
@@ -47,12 +65,21 @@ public class PartidaXadrez {
         Peca p = tabuleiro.removerPeca(origem);
         Peca pCapturada = tabuleiro.removerPeca(destino);
         tabuleiro.ColocaPeca(p, destino);
+        
+        if(pCapturada != null){
+            pecasNoTabuleiro.remove(pCapturada);
+            pecasCapturadas.add(pCapturada);
+        }
+        
         return pCapturada;
     }
     
     private void validaPosicaoOrigem(Posicao posicao){
         if(!tabuleiro.ExistePeca(posicao)){
             throw new ExcecaoXadrez("Não existe peça na origem!");
+        }
+        if(jogadorAtual != ((PecaXadrez)tabuleiro.peca(posicao)).getCor()){
+            throw new ExcecaoXadrez("Está peça não é sua!");
         }
         if(!tabuleiro.peca(posicao).existePeloMenosUmMovimento()){
             throw new ExcecaoXadrez("Não existe movimentos possíveis para esta peça!");
@@ -65,8 +92,14 @@ public class PartidaXadrez {
         }
     }
     
+    private void proximoTurno(){
+        turno++;
+        jogadorAtual = (jogadorAtual == Cor.BRANCA) ? Cor.PRETA : Cor.BRANCA; 
+    }
+    
     private void colocaNovaPeca(char couna, int linha, PecaXadrez peca){
         tabuleiro.ColocaPeca(peca, new PosicaoXadrez(couna, linha).toPosicaoMatriz());
+        pecasNoTabuleiro.add(peca);
     }
     
     private void iniciarPartida(){        

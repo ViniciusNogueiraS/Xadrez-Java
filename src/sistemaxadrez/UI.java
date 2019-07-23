@@ -1,7 +1,10 @@
 package sistemaxadrez;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 import xadrez.Cor;
 import xadrez.PartidaXadrez;
 import xadrez.PecaXadrez;
@@ -45,6 +48,13 @@ public class UI {
         }
     }
     
+    public static void printPartida(PartidaXadrez partida, List<PecaXadrez> capturadas){
+        printTabuleiro(partida.getPecas());
+        printPecaCapturada(capturadas);
+        System.out.print(ANSI_CYAN_BACKGROUND + "Turno: " + partida.getTurno() + " ║ ");
+        System.out.println("Esperando pelo jogador da peça " + partida.getJogadorAtual() + "..." + ANSI_RESET);
+    }
+    
     public static void printTabuleiro(PecaXadrez[][] pecas){
         System.out.println(ANSI_WHITE_BACKGROUND+"  a b c d e f g h  ");
         for(int i = 0; i < pecas.length; i++){
@@ -80,13 +90,26 @@ public class UI {
             System.out.print("-" + ANSI_RESET);
         }else{
             if (peca.getCor() == Cor.BRANCA){
-                System.out.print(ANSI_WHITE + "\033[1m" + peca + "\033[0m" + ANSI_RESET);
+                if(mp){
+                    System.out.print(ANSI_RED + "\033[1m" + peca + "\033[0m" + ANSI_RESET);
+                }else{
+                    System.out.print(ANSI_WHITE + "\033[1m" + peca + "\033[0m" + ANSI_RESET);
+                }
             }else{
                 System.out.print(peca + ANSI_RESET);
             }
         }
         System.out.print(ANSI_GREEN_BACKGROUND + " ");
+        
     }
-    
+    private static void printPecaCapturada(List<PecaXadrez> capturadas){
+        List<PecaXadrez> brancas = capturadas.stream().filter(x -> x.getCor() == Cor.BRANCA).collect(Collectors.toList());
+        List<PecaXadrez> pretas = capturadas.stream().filter(x -> x.getCor() == Cor.PRETA).collect(Collectors.toList());
+        System.out.println("Peças capturadas:");
+        System.out.print(ANSI_WHITE_BACKGROUND + "Brancas:");
+        System.out.println(Arrays.toString(brancas.toArray()));
+        System.out.print("Pretas:");
+        System.out.println(Arrays.toString(brancas.toArray()) + ANSI_RESET);
+    }
     
 }
