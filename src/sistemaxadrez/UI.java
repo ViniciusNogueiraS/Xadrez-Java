@@ -52,7 +52,11 @@ public class UI {
         printTabuleiro(partida.getPecas());
         printPecaCapturada(capturadas);
         System.out.print(ANSI_CYAN_BACKGROUND + "Turno: " + partida.getTurno() + " ║ ");
-        System.out.println("Esperando pelo jogador da peça " + partida.getJogadorAtual() + "..." + ANSI_RESET);
+        System.out.println("Esperando pelo jogador das peças " + partida.getJogadorAtual() + "S..." + ANSI_RESET);
+        
+        if(partida.getXeque()){
+            System.out.println(ANSI_RED_BACKGROUND + " ▼▲ XEQUE ▲▼ " + ANSI_RESET);
+        }
     }
     
     public static void printTabuleiro(PecaXadrez[][] pecas){
@@ -106,10 +110,10 @@ public class UI {
         List<PecaXadrez> brancas = capturadas.stream().filter(x -> x.getCor() == Cor.BRANCA).collect(Collectors.toList());
         List<PecaXadrez> pretas = capturadas.stream().filter(x -> x.getCor() == Cor.PRETA).collect(Collectors.toList());
         System.out.println("Peças capturadas:");
-        System.out.print(ANSI_WHITE_BACKGROUND + "Brancas:");
-        System.out.println(Arrays.toString(brancas.toArray()));
-        System.out.print("Pretas:");
+        System.out.print(ANSI_GREEN_BACKGROUND + ANSI_WHITE + "Brancas:");
         System.out.println(Arrays.toString(brancas.toArray()) + ANSI_RESET);
+        System.out.print(ANSI_GREEN_BACKGROUND + "Pretas:");
+        System.out.println(Arrays.toString(pretas.toArray()) + ANSI_RESET);
     }
     
 }

@@ -14,7 +14,11 @@ public abstract class PecaXadrez extends Peca{
 
     public Cor getCor() {
         return cor;
-    }   
+    }
+    
+    public PosicaoXadrez getPosicaoXadrez(){
+        return PosicaoXadrez.toPosicaoTabuleiro(posicao);
+    }
     
     protected boolean existePecaInimiga(Posicao posicao){
         PecaXadrez p = (PecaXadrez)getTabuleiro().peca(posicao);

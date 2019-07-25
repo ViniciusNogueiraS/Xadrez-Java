@@ -21,10 +21,9 @@ public class SistemaXadrez {
             try{
                 UI.limpaTela();
                 System.out.println("P = Peão, T = Torre, C = Cavalo, B = Bispo, R = Rei, D = Dama");
-                System.out.println();
                 UI.printPartida(partida1, capturadas);
                 System.out.println();
-                System.out.print("Origem: ");
+                System.out.print(UI.ANSI_YELLOW_BACKGROUND + "Origem: ");
                 PosicaoXadrez origem = UI.lerPosicaoXadrez(sc);
                 
                 boolean[][] movimentosPossiveis = partida1.movimentosPossiveis(origem);
@@ -32,7 +31,7 @@ public class SistemaXadrez {
                 UI.printTabuleiro(partida1.getPecas(), movimentosPossiveis);
                 
                 System.out.println();
-                System.out.print("Destino: ");
+                System.out.print(UI.ANSI_YELLOW_BACKGROUND +"Destino: ");
                 PosicaoXadrez destino = UI.lerPosicaoXadrez(sc);
 
                 PecaXadrez pCapturada = partida1.MovimentaXadrez(origem, destino);
