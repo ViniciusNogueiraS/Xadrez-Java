@@ -52,10 +52,14 @@ public class UI {
         printTabuleiro(partida.getPecas());
         printPecaCapturada(capturadas);
         System.out.print(ANSI_CYAN_BACKGROUND + "Turno: " + partida.getTurno() + " ║ ");
-        System.out.println("Esperando pelo jogador das peças " + partida.getJogadorAtual() + "S..." + ANSI_RESET);
-        
-        if(partida.getXeque()){
-            System.out.println(ANSI_RED_BACKGROUND + " ▼▲ XEQUE ▲▼ " + ANSI_RESET);
+        if(!partida.getXequeMate()){
+            System.out.println("Esperando pelo jogador das peças " + partida.getJogadorAtual() + "S..." + ANSI_RESET);
+            if(partida.getXeque()){
+                System.out.println(ANSI_RED_BACKGROUND + " ▼ XEQUE ▲ " + ANSI_RESET);
+            }
+        }else{
+            System.out.println(ANSI_RED_BACKGROUND + " ▼▲ XEQUE-MATE ▲▼ " + ANSI_RESET);
+            System.out.println("O vencedor é o jogador das peças " + partida.getJogadorAtual() + "S!!!");
         }
     }
     
