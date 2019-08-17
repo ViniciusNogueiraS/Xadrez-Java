@@ -30,6 +30,19 @@ public class Peao extends PecaXadrez{
             if(getTabuleiro().ExistePosicao(p) && !existePecaInimiga(p)){
                 mat[p.getLinha()][p.getColuna()] = true;
             }
+            
+            //ACIMA DA PEÇA PRIMEIRO MOVIMENTO
+            p.setValores(posicao.getLinha() - 2, posicao.getColuna());
+            if(getTabuleiro().ExistePosicao(p) && !getTabuleiro().ExistePeca(p) && getQuantMovimentos() == 0){
+                if(mat[p.getLinha() + 1][p.getColuna()] == true){
+                    mat[p.getLinha()][p.getColuna()] = true;
+                }
+            }
+            if(getTabuleiro().ExistePosicao(p) && !existePecaInimiga(p) && getQuantMovimentos() == 0){
+                if(mat[p.getLinha() + 1][p.getColuna()] == true){
+                    mat[p.getLinha()][p.getColuna()] = true;
+                }
+            }
         
             //DIAGONAL CIMA-ESQUERDA DA PEÇA
             p.setValores(posicao.getLinha() - 1, posicao.getColuna() - 1);
@@ -43,13 +56,26 @@ public class Peao extends PecaXadrez{
                 mat[p.getLinha()][p.getColuna()] = true;
             }
         }else{
-            //BAIXO DA PEÇA
+            //ABAIXO DA PEÇA
             p.setValores(posicao.getLinha() + 1, posicao.getColuna());
             if(getTabuleiro().ExistePosicao(p) && !getTabuleiro().ExistePeca(p)){
                 mat[p.getLinha()][p.getColuna()] = true;
             }
             if(getTabuleiro().ExistePosicao(p) && !existePecaInimiga(p)){
                 mat[p.getLinha()][p.getColuna()] = true;
+            }
+            
+            //ABAIXO DA PEÇA PRIMEIRO MOVIMENTO
+            p.setValores(posicao.getLinha() + 2, posicao.getColuna());
+            if(getTabuleiro().ExistePosicao(p) && !getTabuleiro().ExistePeca(p) && getQuantMovimentos() == 0){
+                if(mat[p.getLinha() - 1][p.getColuna()] == true){
+                    mat[p.getLinha()][p.getColuna()] = true;
+                }
+            }
+            if(getTabuleiro().ExistePosicao(p) && !existePecaInimiga(p) && getQuantMovimentos() == 0){
+                if(mat[p.getLinha() - 1][p.getColuna()] == true){
+                    mat[p.getLinha()][p.getColuna()] = true;
+                }
             }
         
             //DIAGONAL BAIXO-ESQUERDA DA PEÇA
