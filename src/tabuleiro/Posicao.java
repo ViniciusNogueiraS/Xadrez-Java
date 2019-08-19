@@ -34,5 +34,4 @@ public class Posicao {
         this.linha = linha;
         this.coluna = coluna;
     }
-    
 }

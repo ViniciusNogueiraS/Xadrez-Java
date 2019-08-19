@@ -20,7 +20,6 @@ public class SistemaXadrez {
         while(!partida1.getXequeMate()){
             try{
                 UI.limpaTela();
-                System.out.println("P = Peão, T = Torre, C = Cavalo, B = Bispo, R = Rei, D = Dama");
                 UI.printPartida(partida1, capturadas);
                 System.out.println();
                 System.out.print(UI.ANSI_YELLOW_BACKGROUND + "Origem: ");
@@ -39,6 +38,13 @@ public class SistemaXadrez {
                 if(pCapturada != null){
                     capturadas.add(pCapturada);
                 }
+                
+                if(partida1.getPromovido() != null){
+                    System.out.print("Entre com a peça a ser promovida (T/C/B/D): ");
+                    String tipo = sc.nextLine();
+                    partida1.substituiPecaPromovida(tipo);
+                }
+                
             }catch(ExcecaoXadrez e){
                 System.out.println(e.getMessage());
                 sc.nextLine();

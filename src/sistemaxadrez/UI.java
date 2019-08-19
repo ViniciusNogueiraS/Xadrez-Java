@@ -64,8 +64,15 @@ public class UI {
     }
     
     public static void printTabuleiro(PecaXadrez[][] pecas){
+        System.out.println("        P = Peão, T = Torre, C = Cavalo, B = Bispo, R = Rei, D = Dama");
+        for(int u = 0; u < 28; u++){
+            System.out.print(ANSI_RESET + " ");
+        }
         System.out.println(ANSI_WHITE_BACKGROUND+"  a b c d e f g h  ");
         for(int i = 0; i < pecas.length; i++){
+            for(int u = 0; u < 28; u++){
+                System.out.print(ANSI_RESET + " ");
+            }
             System.out.print(ANSI_WHITE_BACKGROUND+(8-i)+ANSI_GREEN_BACKGROUND+" ");
             for(int j = 0; j < pecas.length; j++){
                     printPeca(pecas[i][j], false);
@@ -73,12 +80,22 @@ public class UI {
             System.out.print(ANSI_WHITE_BACKGROUND+(8-i));
             System.out.println();
         }
+        for(int u = 0; u < 28; u++){
+            System.out.print(ANSI_RESET + " ");
+        }
         System.out.println(ANSI_WHITE_BACKGROUND+"  a b c d e f g h  ");
     }
     
     public static void printTabuleiro(PecaXadrez[][] pecas, boolean[][] movimentosPossiveis){
+        System.out.println("        P = Peão, T = Torre, C = Cavalo, B = Bispo, R = Rei, D = Dama");
+        for(int u = 0; u < 28; u++){
+            System.out.print(ANSI_RESET + " ");
+        }
         System.out.println(ANSI_WHITE_BACKGROUND+"  a b c d e f g h  ");
         for(int i = 0; i < pecas.length; i++){
+            for(int u = 0; u < 28; u++){
+                System.out.print(ANSI_RESET + " ");
+            }
             System.out.print(ANSI_WHITE_BACKGROUND+(8-i)+ANSI_GREEN_BACKGROUND+" ");
             for(int j = 0; j < pecas.length; j++){
                 printPeca(pecas[i][j], movimentosPossiveis[i][j]);
@@ -86,7 +103,14 @@ public class UI {
             System.out.print(ANSI_WHITE_BACKGROUND+(8-i));
             System.out.println();
         }
+        for(int u = 0; u < 28; u++){
+            System.out.print(ANSI_RESET + " ");
+        }
         System.out.println(ANSI_WHITE_BACKGROUND+"  a b c d e f g h  ");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
     }
     
     private static void printPeca(PecaXadrez peca, boolean mp){
